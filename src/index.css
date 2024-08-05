@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-rec {
+  background-image: url(./assets/rec1.png);
+}
+
+.bg-recc {
+  background-image: url(./assets/rec2.png);
+}
+
+.bg-reccc {
+  background-image: url(./assets/Rec3.png);
+  object-fit: cover;
+}
+.bg-star {
+  background-image: url(./assets/star.png);
+}
+.word-sp-w {
+  word-spacing: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.cee {
+  background-image: url(./assets/c.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.8rem; /* Sesuaikan dengan ukuran gambar Anda */
+  height: 2rem; /* Sesuaikan dengan ukuran gambar Anda */
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  left: 8px;
+}
