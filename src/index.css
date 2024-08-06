@@ -33,3 +33,13 @@
   position: relative;
   left: 8px;
 }
+
+@media (min-width: 640px) {
+  .textl {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
+  .textr {
+    writing-mode: vertical-lr;
+  }
+}
