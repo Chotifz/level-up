@@ -1,60 +1,105 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
-import starImage from "./assets/star.png";
-import { products } from "./products";
-import downloadImage from "./assets/download.png";
+
 import fbIcon from "./assets/fb-icon.svg";
 import instagramIcon from "./assets/instagram-icon.svg";
 import xIcon from "./assets/x-icon.svg";
+import { ImageSide } from "./components/ImageSide";
+import { Footer } from "./components/Footer";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState(
-    products.find((p) => p.category === "Ocean")
-  );
-  const [selectedProduct, setSelectedProduct] = useState(
-    selectedCategory.data[1]
-  );
+  const data = [
+    {
+      id: 1,
+      title: "Coral Reef Lamp",
+      description: "A beautiful lamp inspired by coral reefs.",
+      price: 45,
+      imageUrl:
+        "https://res.cloudinary.com/dxiiecbza/image/upload/v1723127166/sea1_uuirxk.jpg",
+    },
+    {
+      id: 2,
+      title: "Ocean Breeze Scented Candle",
+      description: "Candle with a refreshing ocean breeze scent.",
+      price: 25,
+      imageUrl:
+        "https://res.cloudinary.com/dxiiecbza/image/upload/v1723131277/oce7_ag5fz2.jpg",
+    },
+    {
+      id: 3,
+      title: "Seashell Jewelry Box",
+      description: "A jewelry box decorated with seashells.",
+      price: 35,
+      imageUrl:
+        "https://res.cloudinary.com/dxiiecbza/image/upload/v1723131278/oce6_hxtjw1.jpg",
+    },
+    {
+      id: 4,
+      title: "Seashell Jewelry Box",
+      description: "A jewelry box decorated with seashells.",
+      price: 35,
+      imageUrl:
+        "https://res.cloudinary.com/dxiiecbza/image/upload/v1723131383/oce2_fa6goh.jpg",
+    },
+    {
+      id: 5,
+      title: "Seashell Jewelry Box",
+      description: "A jewelry box decorated with seashells.",
+      price: 35,
+      imageUrl:
+        "https://res.cloudinary.com/dxiiecbza/image/upload/v1723131279/oce4_xsoasx.jpg",
+    },
+  ];
 
-  const imageUrl = selectedProduct.imageUrl;
+  const [datas, setDatas] = useState(data[0]);
+  const [zoom, setZoom] = useState(false);
+
+  const handleImageZoom = () => {
+    setZoom(!zoom);
+  };
+
+  const handleImageClick = (image) => {
+    setDatas(image);
+  };
 
   return (
     <div
       className="bg-no-repeat bg-center filter bg-cover "
-      style={{ backgroundImage: `url(${imageUrl})` }}
+      style={{ backgroundImage: `url(${datas.imageUrl})` }}
     >
       <div
         className="absolute inset-0 bg-cover bg-no-repeat bg-center filter blur-md"
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{ backgroundImage: `url(${datas.imageUrl})` }}
       ></div>
 
       <div className=" relative bg-cover bg-no-repeat bg-center h-screen">
         <div className="max-w-7xl h-full px-8 py-12 mx-auto  sm:px-12 md:px-16 lg:px-24 sm:py-14 md:py-20  ">
+          {/* card cyan */}
           <div className="flex flex-col justify-between rounded-[3rem] h-full px-6 py-2 bg-cyan-200">
             <Nav />
             <div className="w-full h-full overflow-hidden">
               <div className="relative h-full w-full flex flex-col sm:flex-row items-center justify-between max-sm:justify-start gap-2">
                 {/*side image*/}
-                <div className="flex relative justify-center  h-24 w-full sm:h-64 mx-auto sm:w-26 sm:max-w-36 ">
-                  <div className="flex items-start justify-center flex-col gap-1  w-96  ">
-                    <div className="relative flex  justify-center items-center">
+                <div className="flex relative justify-center  h-24 w-full  sm:h-64 mx-auto sm:w-26 sm:max-w-36 ">
+                  <div className="flex items-start justify-center flex-col gap-1  w-96 ">
+                    <div className="relative flex justify-center items-center">
                       <span className="p-2.5 rounded-full bg-yellow-200 "></span>
                       <span className="p-[1px] px-1 bg-yellow-200 "></span>
                       <h1 className="bg-white text-center px-2 py-0.5 rounded-2xl font-serif text-[13px]">
                         Ocean Eyes
                       </h1>
                     </div>
-
-                    {/* image container */}
-                    <div className=" flex sm:flex-col overflow-auto no-scrollbar gap-1">
-                      <ImageSide imageUrl={imageUrl} />
-                      <ImageSide imageUrl={imageUrl} />
-                      <ImageSide imageUrl={imageUrl} />
-                      <ImageSide imageUrl={imageUrl} />
-                    </div>
+                    <ImageSide data={data} onImageClick={handleImageClick} />
                   </div>
                 </div>
 
-                <CardImage imageUrl={imageUrl} />
+                {datas && (
+                  <CardImage
+                    imageUrl={datas.imageUrl}
+                    onZoomClick={handleImageZoom}
+                    isZoomed={zoom}
+                  />
+                )}
 
                 <div className="mx-auto px-2 flex max-sm:flex-row-reverse items-center text-[11px] tracking-wider font-mono font-semibold max-sm:gap-1">
                   <div className="p-2 bg-yellow-200  rounded-2xl max-sm:hidden  ">
@@ -76,7 +121,14 @@ function App() {
                     </div>
                     <div className="p-1  bg-yellow-200 rounded-md">
                       <div className="max-w-6 min-w-6 max-sm:max-w-6 max-sm:min-w-5">
-                        <a href="https://www.instagram.com"></a>
+                        <a href="https://www.instagram.com">
+                          {" "}
+                          <img
+                            className="w-full"
+                            src={instagramIcon}
+                            alt="instagram-icon"
+                          />
+                        </a>
                       </div>
                     </div>
                     <div className="p-1  bg-yellow-200 rounded-md">
@@ -103,92 +155,37 @@ function App() {
 
 export default App;
 
-const CardImage = ({ imageUrl }) => {
-  console.log(imageUrl);
+const CardImage = ({ imageUrl, onZoomClick, isZoomed }) => {
   return (
-    <div className="relative bg-slate-100 overflow-hidden rounded-[2rem] bg-center max-w-[45rem] h-full max-h-[32rem] max-md:max-h-[26rem]">
+    <div className="relative overflow-hidden rounded-[2rem] bg-center max-w-[45rem] h-full max-h-[32rem] max-md:max-h-[26rem]">
       <img
         className="object-cover w-full h-full  "
         src={imageUrl}
         alt="main-image"
       />
-    </div>
-  );
-};
-
-const Footer = () => {
-  return (
-    <div className="relative md:h-20 h-24">
-      <div className="flex absolute w-full bottom-24 max-sm:bottom-28 justify-between text-xs md:text-base">
-        <div className="relative w-full h-full">
-          <div className="flex absolute top-5 justify-between gap-2">
-            <div className=" w-16 md:w-24 max-sm:w-10 mx-auto">
-              <img src={starImage} alt="star" />
-            </div>
-            <div className=" flex-row  font-serif max-sm:text-[11px]  justify-between gap-2 ">
-              <div className="p-2 max-sm:p-1 inline-block bg-cyan-200 rounded-r-3xl">
-                <h1 className="bg-white rounded-3xl  p-1  font-semibold">
-                  Satisfy Your Eyes
-                </h1>
-              </div>
-              <div className="p-2 max-sm:p-1 bg-cyan-200 rounded-r-3xl">
-                <h1 className="bg-white rounded-3xl  p-1  font-semibold">
-                  With Ocean Eyes App
-                </h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <Download />
-      </div>
-    </div>
-  );
-};
-
-const Download = () => {
-  return (
-    <div className="bg-cyan-200 p-2 rounded-full relative ">
-      <div className=" bg-cyan-200 rounded-full bottom-5 right-2 px-4 border-4 border-yellow-100">
-        <div className="flex">
-          <div className=" py-1 px-4 w-full font-extrabold max-sm:px-0 max-sm:py-2">
-            <button className="font-serif text-blue-600 hover:text-red-500 text-[11px] max-sm:text-[9px]">
-              Download Now!
-            </button>
-            <span>
-              <p className="text-lg max-sm:text-[12px] tracking-widest">
-                100M+
-              </p>
-              <p className="text-xs max-sm:text-[10px]">USERS</p>
-            </span>
-          </div>
-
-          <button className=" h-20 w-20 bg-center pr-2 ">
-            <img
-              className="object-cover w-full  "
-              src={downloadImage}
-              alt="donwload"
+      <div
+        id="zoom-icon"
+        className="absolute top-4 right-5 "
+        onClick={onZoomClick}
+      >
+        <button>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.8995 4.10052V2.10052H21.8995V10.1005H19.8995V5.51477L14.1213 11.293L12.7071 9.87878L18.4854 4.10052H13.8995Z"
+              fill="currentColor"
             />
-          </button>
-        </div>
-        <footer className="text-[10px] text-center font-semibold max-sm:hidden">
-          Available On Platform :
-        </footer>
-      </div>
-    </div>
-  );
-};
-
-import React from "react";
-
-const ImageSide = ({ imageUrl }) => {
-  return (
-    <div className="relative flex  justify-center items-center">
-      <span className="p-2.5 rounded-full bg-yellow-200 "></span>
-      <span className="p-[1px] px-1 bg-yellow-200 "></span>
-      {/* g */}
-      <div className="bg-slate-100 p-1 rounded-xl relative sm:w-28 w-24 object-cover ">
-        <img className="rounded-xl" src={imageUrl} alt="" />
+            <path
+              d="M4.10046 13.8995H2.10046V21.8995H10.1005V19.8995H5.51468L11.2929 14.1212L9.87872 12.707L4.10046 18.4853V13.8995Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );

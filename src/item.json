@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Coral Reef Lamp",
+    "description": "A beautiful lamp inspired by coral reefs.",
+    "price": 45,
+    "imageUrl": "https://res.cloudinary.com/dxiiecbza/image/upload/v1721356706/paa6_hfhwcw.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Ocean Breeze Scented Candle",
+    "description": "Candle with a refreshing ocean breeze scent.",
+    "price": 25,
+    "imageUrl": "https://res.cloudinary.com/dxiiecbza/image/upload/v1721356719/pchel2_xbkoei.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Seashell Jewelry Box",
+    "description": "A jewelry box decorated with seashells.",
+    "price": 35,
+    "imageUrl": "https://res.cloudinary.com/dxiiecbza/image/upload/v1721356683/bedrooml_ekdyty.jpg"
+  }
+]
