@@ -2,13 +2,13 @@ export const ImageSide = ({ data, onImageClick }) => {
   return (
     <div className="relative flex sm:flex-col overflow-scroll no-scrollbar gap-1 max-sm:w-80">
       <div className="relative flex  justify-center items-center">
-        <span className="p-2.5 rounded-full bg-yellow-200 bg-transparent  max-sm:hidden"></span>
-        <span className="p-[1px] px-1 bg-yellow-200 bg-transparent max-sm:hidden"></span>
+        <span className="p-2.5 rounded-fullbg-transparent  max-sm:hidden"></span>
+        <span className="p-[1px] px-1  bg-transparent max-sm:hidden"></span>
         {/* g */}
         <div className="  flex flex-col max-sm:flex-row    ">
           {data.map((item) => (
-            <div className="flex relative">
-              <div className="absolute top-7 right-[108px] flex  justify-center items-center  max-sm:hidden">
+            <div className="flex relative ">
+              <div className="absolute top-7 right-[112px] flex  justify-center items-center  max-sm:hidden">
                 <span className="p-2.5 rounded-full bg-yellow-200 "></span>
                 <span className="p-[1px] px-1 bg-yellow-200"></span>
               </div>
