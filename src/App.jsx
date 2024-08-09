@@ -108,12 +108,12 @@ function App() {
             <div className="flex ">
               <div className=" flex  rounded-lg  overflow-scroll no-scrollbar  gap-1 w-96">
                 {" "}
-                <div className="relativeflex  justify-center items-center">
+                <div className="relative flex  justify-center items-center">
                   {/* g */}
-                  <div className=" p-1 flex  rounded-xl relative w-24 object-cover ">
+                  <div className=" p-1 flex gap-1 rounded-xl relative w-24 object-cover ">
                     {data.map((item) => (
                       <img
-                        className="rounded-xl p-1 h-[75px]"
+                        className="rounded-xl h-[75px] bg-slate-100 p-[2px]"
                         key={item.id}
                         src={item.imageUrl}
                         alt={item.title}
@@ -136,7 +136,8 @@ function App() {
               <div className="relative h-full w-full flex flex-col sm:flex-row items-center justify-between max-sm:justify-start gap-2">
                 {/*side image*/}
                 <div className="flex relative justify-center  h-24 w-full  sm:h-64 mx-auto sm:w-26 sm:max-w-36 ">
-                  <div className="flex items-start justify-center flex-col gap-1  w-96 ">
+                  <div className="relative flex items-start justify-center flex-col gap-1  w-96 ">
+                    <div className=" absolute max-sm:hidden bg-yellow-200 py-[126px] px-[2px] top-1 left-2"></div>
                     <div className="relative flex justify-center items-center">
                       <span className="p-2.5 rounded-full bg-yellow-200 "></span>
                       <span className="p-[1px] px-1 bg-yellow-200 "></span>
