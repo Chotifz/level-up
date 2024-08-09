@@ -74,8 +74,63 @@ function App() {
 
       <div className=" relative bg-cover bg-no-repeat bg-center h-screen">
         <div className="max-w-7xl h-full px-8 py-12 mx-auto  sm:px-12 md:px-16 lg:px-24 sm:py-14 md:py-20  ">
+          {/* aktif zoom */}
+          <div
+            className={`bg-slate-200 h-full w-full rounded-[2rem] bg-no-repeat bg-center filter bg-cover flex flex-col items-center overflow-hidden ${
+              zoom ? "flex" : "hidden"
+            }`}
+            style={{ backgroundImage: `url(${datas.imageUrl})` }}
+          >
+            <div className="relative  overflow-hidden rounded-[2rem] bg-center w-full h-full mx-auto">
+              <button
+                id="zoom-icon"
+                className="absolute top-4 right-5 "
+                onClick={handleImageZoom}
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.0735 2L21.4877 3.41421L15.6378 9.26416H18.1824V11.2642H12.1824V5.26416H14.1824V7.89111L20.0735 2Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M11.1824 12.2642V18.2642H9.1824V15.8422L3.41421 21.6104L2 20.1962L7.93203 14.2642H5.1824V12.2642H11.1824Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="flex ">
+              <div className=" flex  rounded-lg  overflow-scroll no-scrollbar  gap-1 w-96">
+                {" "}
+                <div className="relativeflex  justify-center items-center">
+                  {/* g */}
+                  <div className=" p-1 flex  rounded-xl relative w-24 object-cover ">
+                    {data.map((item) => (
+                      <img
+                        className="rounded-xl p-1 h-[75px]"
+                        key={item.id}
+                        src={item.imageUrl}
+                        alt={item.title}
+                        onClick={() => handleImageClick(item)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* card cyan */}
-          <div className="flex flex-col justify-between rounded-[3rem] h-full px-6 py-2 bg-cyan-200">
+          <div
+            className={`flex-col justify-between rounded-[3rem] h-full px-6 py-2 bg-cyan-200  ${
+              zoom ? "hidden " : "flex "
+            }`}
+          >
             <Nav />
             <div className="w-full h-full overflow-hidden">
               <div className="relative h-full w-full flex flex-col sm:flex-row items-center justify-between max-sm:justify-start gap-2">
