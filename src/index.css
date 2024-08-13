@@ -34,7 +34,7 @@
   left: 8px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .textl {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
