@@ -1,5 +1,6 @@
 import starImage from "../assets/star.png";
 import downloadImage from "../assets/download.png";
+import avail from "../assets/avail.png";
 
 export const Footer = () => {
   return (
@@ -35,16 +36,14 @@ export const Footer = () => {
 const Download = () => {
   return (
     <div className="bg-cyan-200 p-2 rounded-full relative ">
-      <div className=" bg-cyan-200 rounded-full px-2 border-4 border-yellow-100">
+      <div className="relative bg-cyan-200 rounded-full px-2 border-4 border-yellow-100 md:pb-3">
         <div className="flex">
           <div className=" py-1 px-4 w-full font-extrabold max-sm:px-0 max-sm:py-2">
             <button className="font-serif text-blue-600 hover:text-red-500 text-[11px] max-sm:text-[9px]">
               Download Now!
             </button>
             <span>
-              <p className="text-lg max-sm:text-[12px] tracking-widest">
-                100M+
-              </p>
+              <p className="text-lg max-sm:text-[12px] tracking-wides">100M+</p>
               <p className="text-xs max-sm:text-[10px]">USERS</p>
             </span>
           </div>
@@ -57,9 +56,9 @@ const Download = () => {
             />
           </button>
         </div>
-        <footer className="text-[10px] text-center font-semibold max-sm:hidden">
-          Available On Platform :
-        </footer>
+        <div className="absolute top-[63px] md:top-[66px] left-5  md:left-7 w-full h-full">
+          <img src={avail} alt="" className="object-cover w-32 md:w-40" />
+        </div>
       </div>
     </div>
   );
