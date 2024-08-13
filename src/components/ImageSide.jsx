@@ -8,7 +8,7 @@ export const ImageSide = ({ data, onImageClick }) => {
         <div className="  flex md:flex-col">
           {data.map((item) => (
             <div className="flex relative ">
-              <div className="absolute top-7 right-[112px] hidden  justify-center items-center md:flex">
+              <div className="absolute top-7 right-[112px] hidden   justify-center items-center md:flex">
                 <span className="p-2.5 rounded-full bg-yellow-200 "></span>
                 <span className="p-[1px] px-1 bg-yellow-200"></span>
               </div>

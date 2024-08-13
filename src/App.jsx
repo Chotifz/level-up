@@ -135,8 +135,15 @@ function App() {
           <div className="relative h-full w-full flex flex-col md:flex-row items-center justify-between max-md:justify-start py-1">
             {/*side image*/}
 
-            <div className="relative flex items-center justify-center flex-col gap-1 w-full h-[112x]   md:h-[280px]  md:w-[128px] md:max-w-36">
-              <div className=" absolute max-md:hidden bg-yellow-200 py-[126px] px-[2px] top-1 left-0"></div>
+            <div className="relative flex items-center justify-center flex-col gap-1 w-full h-[112x]   md:h-[280px]  md:w-[128px] md:max-w-36 ">
+              <div className=" absolute  bg-yellow-200 py-[126px] px-[2px] top-1 left-0"></div>
+
+              <div className="relative flex justify-center items-center">
+                <div className="absolute top-[6px] right-[43px] hidden   justify-center items-center md:flex">
+                  <span className="p-2.5 rounded-full bg-yellow-200 "></span>
+                  <span className="p-[1px] px-1 bg-yellow-200"></span>
+                </div>
+              </div>
 
               <h1 className=" bg-white text-center px-2 py-0.5 rounded-2xl font-serif text-[13px]">
                 Ocean Eyes
