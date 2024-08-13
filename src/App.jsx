@@ -136,7 +136,7 @@ function App() {
             {/*side image*/}
 
             <div className="relative flex items-center justify-center flex-col gap-1 w-full h-[112x]   md:h-[280px]  md:w-[128px] md:max-w-36 ">
-              <div className=" absolute  bg-yellow-200 py-[126px] px-[2px] top-1 left-0"></div>
+              <div className=" absolute max-md:hidden bg-yellow-200 py-[126px] px-[2px] top-1 left-0"></div>
 
               <div className="relative flex justify-center items-center">
                 <div className="absolute top-[6px] right-[43px] hidden   justify-center items-center md:flex">
